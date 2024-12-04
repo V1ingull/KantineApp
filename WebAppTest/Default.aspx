@@ -20,6 +20,16 @@
 
 
     <style>
+
+        h2 {
+
+            font-size: 15px;
+
+
+        }
+
+
+
         .gray-box {
             background-color: gray;
             width: 100%;
@@ -62,9 +72,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h2> Hællæ </h2>
         <asp:Label ID="LabelMan" runat="server" Text=""></asp:Label>
         <br />
         <asp:Label ID="LabelTir" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Label ID="LabelOns" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Label ID="LabelTor" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Label ID="LabelFre" runat="server" Text=""></asp:Label>
+
+
     </form>
     <p>
         &nbsp;

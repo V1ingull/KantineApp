@@ -20,7 +20,7 @@ namespace WebAppTest
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Meny", conn);
+                SqlCommand cmd = new SqlCommand("SELECT M.Name ,UM.DagNummer FROM UkeMeny UM, Meny M where UM.Rett = M.Id Order by UM.DagNummer", conn);
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -28,13 +28,19 @@ namespace WebAppTest
                 reader.Close();
                 conn.Close();
             }
-            foreach (DataRow row in dt.Rows)
-            {
+            
 
-                LabelMan.Text = row[1].ToString();
+                LabelMan.Text = dt.Rows[0][0].ToString();
+                LabelTir.Text = dt.Rows[1][0].ToString();
+                LabelOns.Text = dt.Rows[2][0].ToString();
+                LabelTor.Text = dt.Rows[3][0].ToString();
+                LabelFre.Text = dt.Rows[4][0].ToString();
 
-            }
-                
+
+
+
+
+
 
         }
 
