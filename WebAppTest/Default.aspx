@@ -20,6 +20,12 @@
 
 
     <style>
+
+        #lvFastevarer{
+
+            width: 50%;
+
+        }
         h3 {
             font-size: 25px;
         }
@@ -93,27 +99,15 @@
 
 
 
-        <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" >
+        <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
             <layouttemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th>Name</th>
-                        <th>Pris</th>    
+                        <th>Pris</th>  
+                        <th>    </th>
                     </tr>
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
-                    <tr>
-                        <td colspan="3">
-                            <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvFastevarer" PageSize="10">
-                                <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="false" ShowPreviousPageButton="true"
-                                        ShowNextPageButton="false" />
-                                    <asp:NumericPagerField ButtonType="Link" />
-                                    <asp:NextPreviousPagerField ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="false"
-                                        ShowPreviousPageButton="false" />
-                                </Fields>
-                            </asp:DataPager>
-                        </td>
-                    </tr>
                 </table>
             </layouttemplate>
             <grouptemplate>
@@ -124,6 +118,7 @@
             <itemtemplate>
                 <td><%# Eval("Name") %></td>
                 <td><%# Eval("Pris") %></td>
+                <td>Kr</td>
             </itemtemplate>
         </asp:ListView>
       
