@@ -20,7 +20,7 @@ namespace WebAppTest
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT M.Name ,UM.DagNummer FROM UkeMeny UM, Meny M where UM.Rett = M.Id Order by UM.DagNummer", conn);
+                SqlCommand cmd = new SqlCommand("Select rett, pris From UkeMeny", conn);
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -30,14 +30,14 @@ namespace WebAppTest
             }
             
 
-                LabelMan.Text = dt.Rows[0][0].ToString();
-                LabelTir.Text = dt.Rows[1][0].ToString();
-                LabelOns.Text = dt.Rows[2][0].ToString();
-                LabelTor.Text = dt.Rows[3][0].ToString();
-                LabelFre.Text = dt.Rows[4][0].ToString();
+                LabelMan.Text = dt.Rows[0][0].ToString()+"  "+ dt.Rows[0][1].ToString() + "kr";
+                LabelTir.Text = dt.Rows[1][0].ToString()+"  "+ dt.Rows[1][1].ToString() + "kr";
+                LabelOns.Text = dt.Rows[2][0].ToString()+"  "+ dt.Rows[2][1].ToString() + "kr";
+                LabelTor.Text = dt.Rows[3][0].ToString()+"  "+ dt.Rows[3][1].ToString() + "kr";
+                LabelFre.Text = dt.Rows[4][0].ToString()+"  "+ dt.Rows[4][1].ToString() + "kr";
 
 
-
+            LabelFaste.Text = "Test" + System.Environment.NewLine + "test2";
 
 
 

@@ -21,6 +21,12 @@
 
     <style>
 
+        h3 {
+
+            font-size: 25px;
+
+        }
+
         h2 {
 
             font-size: 15px;
@@ -72,16 +78,30 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <h2> Hællæ </h2>
-        <asp:Label ID="LabelMan" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Label ID="LabelTir" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Label ID="LabelOns" runat="server" Text=""></asp:Label>
-        <br />
-        <asp:Label ID="LabelTor" runat="server" Text=""></asp:Label>
-        <br />
+        <h3> Ukes meny </h3>
+        <h2> Mandag </h2>
+         <asp:Label ID="LabelMan" runat="server" Text=""></asp:Label> <br />
+        <h2> Tirsdag </h2>
+        <asp:Label ID="LabelTir" runat="server" Text=""></asp:Label>  <br />
+        <h2> Onsdag </h2>
+         <asp:Label ID="LabelOns" runat="server" Text=""></asp:Label> <br />
+        <h2> Torsdag </h2>
+        <asp:Label ID="LabelTor" runat="server" Text=""></asp:Label> <br />
+        <h2> Fredag </h2>
         <asp:Label ID="LabelFre" runat="server" Text=""></asp:Label>
+
+        <h3> Faste varer </h3>
+
+        <asp:Label ID="LabelFaste" runat="server" Text=""></asp:Label>
+       
+        
+        
+       
+       
+        
+        
+        
+        
 
 
     </form>
