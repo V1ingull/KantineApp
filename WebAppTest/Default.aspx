@@ -8,7 +8,7 @@
 
 
 
-    <h1> Overskrift  </h1>
+    <h1>Overskrift  </h1>
 
     <nav>
 
@@ -20,18 +20,12 @@
 
 
     <style>
-
         h3 {
-
             font-size: 25px;
-
         }
 
         h2 {
-
             font-size: 15px;
-
-
         }
 
 
@@ -78,24 +72,61 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <h3> Ukes meny </h3>
-        <h2> Mandag </h2>
-         <asp:Label ID="LabelMan" runat="server" Text=""></asp:Label> <br />
-        <h2> Tirsdag </h2>
-        <asp:Label ID="LabelTir" runat="server" Text=""></asp:Label>  <br />
-        <h2> Onsdag </h2>
-         <asp:Label ID="LabelOns" runat="server" Text=""></asp:Label> <br />
-        <h2> Torsdag </h2>
-        <asp:Label ID="LabelTor" runat="server" Text=""></asp:Label> <br />
-        <h2> Fredag </h2>
+        <h3>Ukes meny </h3>
+        <h2>Mandag </h2>
+        <asp:Label ID="LabelMan" runat="server" Text=""></asp:Label>
+        <br />
+        <h2>Tirsdag </h2>
+        <asp:Label ID="LabelTir" runat="server" Text=""></asp:Label>
+        <br />
+        <h2>Onsdag </h2>
+        <asp:Label ID="LabelOns" runat="server" Text=""></asp:Label>
+        <br />
+        <h2>Torsdag </h2>
+        <asp:Label ID="LabelTor" runat="server" Text=""></asp:Label>
+        <br />
+        <h2>Fredag </h2>
         <asp:Label ID="LabelFre" runat="server" Text=""></asp:Label>
 
-        <h3> Faste varer </h3>
+        <h3>Faste varer </h3>
 
-        <asp:Label ID="LabelFaste" runat="server" Text=""></asp:Label>
-       
-        
-        
+
+
+
+        <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" >
+            <layouttemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>Name</th>
+                        <th>Pris</th>    
+                    </tr>
+                    <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
+                    <tr>
+                        <td colspan="3">
+                            <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lvFastevarer" PageSize="10">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="false" ShowPreviousPageButton="true"
+                                        ShowNextPageButton="false" />
+                                    <asp:NumericPagerField ButtonType="Link" />
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="false"
+                                        ShowPreviousPageButton="false" />
+                                </Fields>
+                            </asp:DataPager>
+                        </td>
+                    </tr>
+                </table>
+            </layouttemplate>
+            <grouptemplate>
+                <tr>
+                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+                </tr>
+            </grouptemplate>
+            <itemtemplate>
+                <td><%# Eval("Name") %></td>
+                <td><%# Eval("Pris") %></td>
+            </itemtemplate>
+        </asp:ListView>
+      
        
        
         
@@ -111,6 +142,6 @@
     <p>
         &nbsp;
     </p>
- 
+
 </body>
 </html>

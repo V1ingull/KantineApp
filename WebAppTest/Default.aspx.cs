@@ -14,6 +14,18 @@ namespace WebAppTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            VisUkeMeny();
+            VisFasteVarer();
+
+            
+
+
+
+
+        }
+
+        private void VisUkeMeny()
+        {
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             DataTable dt = new DataTable();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -28,22 +40,34 @@ namespace WebAppTest
                 reader.Close();
                 conn.Close();
             }
-            
-
-                LabelMan.Text = dt.Rows[0][0].ToString()+"  "+ dt.Rows[0][1].ToString() + "kr";
-                LabelTir.Text = dt.Rows[1][0].ToString()+"  "+ dt.Rows[1][1].ToString() + "kr";
-                LabelOns.Text = dt.Rows[2][0].ToString()+"  "+ dt.Rows[2][1].ToString() + "kr";
-                LabelTor.Text = dt.Rows[3][0].ToString()+"  "+ dt.Rows[3][1].ToString() + "kr";
-                LabelFre.Text = dt.Rows[4][0].ToString()+"  "+ dt.Rows[4][1].ToString() + "kr";
 
 
-            LabelFaste.Text = "Test" + System.Environment.NewLine + "test2";
-
-
-
-
+            LabelMan.Text = dt.Rows[0][0].ToString() + "  " + dt.Rows[0][1].ToString() + "kr";
+            LabelTir.Text = dt.Rows[1][0].ToString() + "  " + dt.Rows[1][1].ToString() + "kr";
+            LabelOns.Text = dt.Rows[2][0].ToString() + "  " + dt.Rows[2][1].ToString() + "kr";
+            LabelTor.Text = dt.Rows[3][0].ToString() + "  " + dt.Rows[3][1].ToString() + "kr";
+            LabelFre.Text = dt.Rows[4][0].ToString() + "  " + dt.Rows[4][1].ToString() + "kr";
         }
+        private void VisFasteVarer()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
+                SqlCommand cmd = new SqlCommand("SELECT name, pris from Meny", conn); 
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+                conn.Close();
+            }
+
+            lvFastevarer.DataSource = dt;
+            lvFastevarer.DataBind();
+        }
         protected void ButtonSearchLastName_Click(object sender, EventArgs e)
         {
             //SqlParameter param;
