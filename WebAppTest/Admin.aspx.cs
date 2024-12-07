@@ -16,7 +16,11 @@ namespace WebAppTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            VisUkeMenyAdmin();
+            if (!Page.IsPostBack)
+            {
+                VisUkeMenyAdmin();
+            }
+                
         }
 
         protected void ButtonLagre_Click(object sender, EventArgs e)
@@ -26,10 +30,13 @@ namespace WebAppTest
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand command = new SqlCommand("Update UkeMeny (Rett, pris) VALUES (@0, @1) where Id = @2;", conn);
-                command.Parameters.Add(new SqlParameter("@0", "ost"));
-                command.Parameters.Add(new SqlParameter("@1", 10));
-                command.Parameters.Add(new SqlParameter("@2", 1));
+                var strRett = TBrettMan.Text;
+                var strPris = TBprisMan.Text;
+                var Id = 1;
+
+
+                SqlCommand command = new SqlCommand($"Update UkeMeny SET Rett = '{strRett}', pris = {strPris} where Id = {Id};", conn);
+
                 command.CommandType = CommandType.Text;
 
                 command.ExecuteNonQuery();
