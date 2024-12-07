@@ -16,16 +16,12 @@
 
     </nav>
 
-    <heder></heder>
-
 
     <style>
-
-        #lvFastevarer{
-
+        #lvFastevarer {
             width: 50%;
-
         }
+
         h3 {
             font-size: 25px;
         }
@@ -100,34 +96,34 @@
 
 
         <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
-            <layouttemplate>
+            <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th>Name</th>
-                        <th>Pris</th>  
-                        <th>    </th>
+                        <th>Pris</th>
+                        <th></th>
                     </tr>
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                 </table>
-            </layouttemplate>
-            <grouptemplate>
+            </LayoutTemplate>
+            <GroupTemplate>
                 <tr>
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                 </tr>
-            </grouptemplate>
-            <itemtemplate>
+            </GroupTemplate>
+            <ItemTemplate>
                 <td><%# Eval("Name") %></td>
                 <td><%# Eval("Pris") %></td>
                 <td>Kr</td>
-            </itemtemplate>
+            </ItemTemplate>
         </asp:ListView>
-      
-       
-       
-        
-        
-        
-        
+
+
+
+
+
+
+
 
 
     </form>
