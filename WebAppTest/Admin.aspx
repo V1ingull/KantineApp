@@ -38,7 +38,9 @@
         <h2>Fredag </h2>
         <asp:TextBox ID="TBrettFre" runat="server" Text=""></asp:TextBox> <asp:TextBox ID="TBprisFre" runat="server" Text=""></asp:TextBox> 
         <br />
-        <button> Opptater </button>
+       
+        <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server"/>
+
 
     </form>
 </body>

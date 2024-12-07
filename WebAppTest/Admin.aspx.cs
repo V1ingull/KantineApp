@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace WebAppTest
 {
@@ -17,6 +19,27 @@ namespace WebAppTest
             VisUkeMenyAdmin();
         }
 
+        protected void ButtonLagre_Click(object sender, EventArgs e)
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+            //DataTable dt = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("Update UkeMeny (Rett, pris) VALUES (@0, @1) where Id = @2;", conn);
+                command.Parameters.Add(new SqlParameter("@0", "ost"));
+                command.Parameters.Add(new SqlParameter("@1", 10));
+                command.Parameters.Add(new SqlParameter("@2", 1));
+                command.CommandType = CommandType.Text;
+
+                command.ExecuteNonQuery();
+
+
+                conn.Close();
+            }
+
+
+        }
 
         private void VisUkeMenyAdmin()
         {

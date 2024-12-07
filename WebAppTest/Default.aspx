@@ -12,7 +12,7 @@
 
     <nav>
 
-        <a href="Loginn.aspx">Log inn</a>
+        <a href="Admin.aspx">Log inn</a>
 
     </nav>
 
