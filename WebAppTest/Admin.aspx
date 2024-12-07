@@ -23,7 +23,7 @@
 <body>
     <form id="form1" runat="server">
         <h3>Ukes meny </h3>
-        <h2>Mandag </h2>
+        <h2>Mandag </h2>                                                    
         <asp:TextBox ID="TBrettMan" runat="server" Text=""></asp:TextBox> <asp:TextBox ID="TBprisMan" runat="server" Text=""></asp:TextBox> 
         <br />
         <h2>Tirsdag </h2>
