@@ -20,7 +20,7 @@ namespace WebAppTest
             {
                 VisUkeMenyAdmin();
             }
-                
+
         }
 
         protected void ButtonLagre_Click(object sender, EventArgs e)
@@ -30,22 +30,31 @@ namespace WebAppTest
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var strRett = TBrettMan.Text;
-                var strPris = TBprisMan.Text;
-                var Id = 1;
 
 
-                SqlCommand command = new SqlCommand($"Update UkeMeny SET Rett = '{strRett}', pris = {strPris} where Id = {Id};", conn);
 
-                command.CommandType = CommandType.Text;
+                LagreDag(conn, 1, TBrettMan.Text, TBprisMan.Text);
+                LagreDag(conn, 2, TBrettTir.Text, TBprisTir.Text);
+                LagreDag(conn, 3, TBrettOns.Text, TBprisOns.Text);
+                LagreDag(conn, 4, TBrettTor.Text, TBprisTor.Text);
+                LagreDag(conn, 5, TBrettFre.Text, TBprisFre.Text);
 
-                command.ExecuteNonQuery();
+
 
 
                 conn.Close();
             }
 
 
+        }
+
+        private static void LagreDag(SqlConnection conn, int Dag, string strRett, string strPris)
+        {
+            SqlCommand command = new SqlCommand($"Update UkeMeny SET Rett = '{strRett}', pris = {strPris} where Id = {Dag};", conn);
+
+            command.CommandType = CommandType.Text;
+
+            command.ExecuteNonQuery();
         }
 
         private void VisUkeMenyAdmin()
