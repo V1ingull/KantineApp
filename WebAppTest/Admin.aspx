@@ -14,9 +14,6 @@
 
         }
 
-
-
-
     </style>
 
 </head>
@@ -40,7 +37,6 @@
         <br />
        
         <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server"/>
-
 
     </form>
 </body>

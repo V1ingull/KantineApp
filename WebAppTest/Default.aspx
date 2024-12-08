@@ -4,20 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    
 
 
 
-    <h1>Overskrift  </h1>
+    <h1> Overskrift  </h1>
 
     <nav>
 
-        <a href="Admin.aspx">Log inn</a>
+        <a href="Admin.aspx">Log inn </a>
 
     </nav>
 
-
     <style>
+
         #lvFastevarer {
             width: 50%;
         }
@@ -30,14 +30,10 @@
             font-size: 15px;
         }
 
-
-
         .gray-box {
             background-color: gray;
             width: 100%;
         }
-
-
 
         body {
             background-color: lightgrey;
@@ -50,7 +46,6 @@
             padding: 0;
             width: 100%;
         }
-
 
         table {
             border-collapse: collapse;
@@ -70,9 +65,13 @@
             background-color: #04AA6D;
             color: white;
         }
+
     </style>
+
 </head>
+
 <body>
+
     <form id="form1" runat="server">
         <h3>Ukes meny </h3>
         <h2>Mandag </h2>
@@ -91,9 +90,6 @@
         <asp:Label ID="LabelFre" runat="server" Text=""></asp:Label>
 
         <h3>Faste varer </h3>
-
-
-
 
         <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
             <LayoutTemplate>
@@ -118,21 +114,16 @@
             </ItemTemplate>
         </asp:ListView>
 
-
-
-
-
-
-
-
-
     </form>
+
     <p>
         &nbsp;
     </p>
+
     <p>
         &nbsp;
     </p>
 
 </body>
+
 </html>

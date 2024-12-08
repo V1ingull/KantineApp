@@ -16,12 +16,6 @@ namespace WebAppTest
         {
             VisUkeMeny();
             VisFasteVarer();
-
-            
-
-
-
-
         }
 
         private void VisUkeMeny()
@@ -40,7 +34,6 @@ namespace WebAppTest
                 reader.Close();
                 conn.Close();
             }
-
 
             LabelMan.Text = dt.Rows[0][0].ToString() + "  " + dt.Rows[0][1].ToString() + "kr";
             LabelTir.Text = dt.Rows[1][0].ToString() + "  " + dt.Rows[1][1].ToString() + "kr";
