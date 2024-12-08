@@ -31,19 +31,19 @@ namespace WebAppTest
                     }
                     else
                     {
-                        Response.Write("<p style='color:red;'>Incorrect password. Please try again.</p>");
+                        Response.Write("<p style='color:red;'>Feil passord.</p>");
                     }
                 }
                 else
                 {
                     // Render password form
                     Response.Write(@"
-                <form method='post'>
-                    <label for='password'>Skriv in passord:</label>
-                    <input type='password' id='password' name='password' />
-                    <input type='Submit' value='OK' />
-                </form>
-            ");
+                                    <form method='post'>
+                                        <label for='password'>Skriv in passord:</label>
+                                        <input type='password' id='password' name='password' />
+                                        <input type='Submit' value='OK' />
+                                    </form>
+                                 ");
                 }
 
                 Response.End(); // Stop further processing of the page
@@ -106,6 +106,7 @@ namespace WebAppTest
             TBrettOns.Text = dt.Rows[2][0].ToString();
             TBrettTor.Text = dt.Rows[3][0].ToString();
             TBrettFre.Text = dt.Rows[4][0].ToString();
+
 
             TBprisMan.Text = dt.Rows[0][1].ToString();
             TBprisTir.Text = dt.Rows[1][1].ToString();
