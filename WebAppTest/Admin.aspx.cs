@@ -14,14 +14,45 @@ namespace WebAppTest
 {
     public partial class Admin : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                VisUkeMenyAdmin();
+                // Check if user is authenticated
+                if (Session["Authenticated"] == null || !(bool)Session["Authenticated"])
+                {
+                    // Redirect to a password prompt page or display the password form
+                    Response.Write(@"
+                                <form method='post'>
+                                <label for='password'>Enter Password:</label>
+                                <input type='password' id='password' name='password' />
+                                <input type='submit' value='Submit' />
+                                </form>
+                                ");
+                    Response.End(); // Stop further processing
+                }
             }
 
+            // Handle postback for password entry
+            if (Request.HttpMethod == "POST")
+            {
+                string password = Request.Form["password"];
+
+                if (password == "kantine") // Replace with your actual password logic
+                {
+                    Session["Authenticated"] = true; // Mark user as authenticated
+                    Response.Redirect(Request.RawUrl); // Reload the page without the password form
+                    VisUkeMenyAdmin();
+                }
+                else
+                {
+                    Response.Write("<p style='color:red;'>Incorrect password. Please try again.</p>");
+                }
+            }
         }
+
+
 
         protected void ButtonLagre_Click(object sender, EventArgs e)
         {
