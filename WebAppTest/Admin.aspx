@@ -6,6 +6,12 @@
 <head runat="server">
     <title></title>
 
+     <nav>
+
+     <a href="Default.aspx"> Meny </a>
+
+    </nav>
+
     <style>
 
         button {
@@ -37,6 +43,7 @@
         <br />
        
         <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server"/>
+
 
     </form>
 </body>

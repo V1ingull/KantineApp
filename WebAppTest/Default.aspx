@@ -8,7 +8,7 @@
 
 
 
-    <h1> Overskrift  </h1>
+    <h1> Glemmen VGS Kantine meny  </h1>
 
     <nav>
 
@@ -18,16 +18,25 @@
 
     <style>
 
-        #lvFastevarer {
-            width: 50%;
+        nav {
+            font-family
+
         }
+        
+        p{
+             text-align: center;
+
+        }
+       
 
         h3 {
-            font-size: 25px;
+             text-align: center;
+             font-size: 25px;
         }
 
         h2 {
-            font-size: 15px;
+             text-align: center;
+             font-size: 20px;
         }
 
         .gray-box {
@@ -36,20 +45,30 @@
         }
 
         body {
+            text-align: center;
             background-color: lightgrey;
         }
 
-        h1 {
-            font-size: 40px;
+       h1 {
+
+            font-size: 2.5rem; 
             background-color: dimgray;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
+            color: white; 
+            margin: 0 auto; 
+            padding: 1rem; 
+            width: 100%; 
+            max-width: 1200px; 
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+       }
 
         table {
+           
             border-collapse: collapse;
-            width: 100%;
+            min-width: 350px;
+            font-family: Arial, sans-serif;
+            
         }
 
         th, td {
@@ -91,29 +110,33 @@
 
         <h3>Faste varer </h3>
 
-        <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
-            <LayoutTemplate>
-                <table cellpadding="0" cellspacing="0">
+        <p> 
+                <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
+                <LayoutTemplate>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th>Name</th>
+                            <th>Pris</th>
+                            <th></th>
+                        </tr>
+                        <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
+                    </table>
+                </LayoutTemplate>
+                <GroupTemplate>
                     <tr>
-                        <th>Name</th>
-                        <th>Pris</th>
-                        <th></th>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                     </tr>
-                    <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
-                </table>
-            </LayoutTemplate>
-            <GroupTemplate>
-                <tr>
-                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
-                </tr>
-            </GroupTemplate>
-            <ItemTemplate>
-                <td><%# Eval("Name") %></td>
-                <td><%# Eval("Pris") %></td>
-                <td>Kr</td>
-            </ItemTemplate>
-        </asp:ListView>
+                </GroupTemplate>
+                <ItemTemplate>
+                    <td><%# Eval("Name") %></td>
+                    <td><%# Eval("Pris") %></td>
+                    <td>Kr</td>
+                </ItemTemplate>
+            </asp:ListView>
 
+      </p>
+                
+          
     </form>
 
     <p>
