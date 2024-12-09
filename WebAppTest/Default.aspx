@@ -148,6 +148,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Pris</th>
+                            <th></th>
                         </tr>
                         <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                     </table>
