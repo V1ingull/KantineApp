@@ -77,7 +77,11 @@ namespace WebAppTest
 
         private static void LagreDag(SqlConnection conn, int Dag, string strRett, string strPris)
         {
-            SqlCommand command = new SqlCommand($"Update UkeMeny SET Rett = '{strRett}', pris = {strPris} where Id = {Dag};", conn);
+            SqlCommand command = new SqlCommand($"Update UkeMeny SET Rett = @strRett, pris = @strPris where Id = @Dag;", conn);
+
+            command.Parameters.AddWithValue("@strRett", strRett);
+            command.Parameters.AddWithValue("@strPris", strPris);
+            command.Parameters.AddWithValue("@Dag", Dag);
 
             command.CommandType = CommandType.Text;
 
