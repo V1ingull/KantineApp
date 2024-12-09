@@ -8,14 +8,19 @@
 
      <nav>
 
-     <a href="Default.aspx"> Meny </a>
+        <a href="Default.aspx"> Meny </a>
 
     </nav>
 
     <style>
 
-        button {
+        body {
+            text-align:center;
 
+        }
+
+        #ButtonLagre {
+           
             margin: 20px;
 
         }
