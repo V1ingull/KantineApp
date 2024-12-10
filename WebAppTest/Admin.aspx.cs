@@ -143,7 +143,7 @@ namespace WebAppTest
             lvFastevarerAdmin.DataSource = dt;
             lvFastevarerAdmin.DataBind();
         }
-        void ProductsListView_ItemEditing(Object sender, ListViewEditEventArgs e)
+        protected void lvFastevarerAdmin_ItemEditing(Object sender, ListViewEditEventArgs e)
         {
             ListViewItem item = lvFastevarerAdmin.Items[e.NewEditIndex];
         }

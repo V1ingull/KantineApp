@@ -71,8 +71,8 @@
         <br />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="ProductsListView_ItemEditing">
-            <LayoutTemplate>
+        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" > 
+            <LayoutTemplate>--%>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th></th>
@@ -107,13 +107,13 @@
                         <asp:Label runat="server" ID="NameLabel"
                             AssociatedControlID="NameTextBox"
                             Text="Name" />
-                        <asp:TextBox ID="NameTextBox" runat="server"
-                            Text='<%#Bind("Name") %>' MaxLength="50" /><br />
+                        <asp:TextBox ID="NameTB" runat="server"
+                            Text='<%#Bind("Name")%>' MaxLength="50" /><br />
                         <asp:Label runat="server" ID="Pris"
                             AssociatedControlID="PrisTB"
                             Text="Pris" />
                         <asp:TextBox ID="PrisTB" runat="server"
-                            Text='<%#Bind("Pris") %>' MaxLength="25" /><br />
+                            Text='<%#Bind("Pris")%>' MaxLength="25" /><br />
                     </td>
                   
                 </tr>
