@@ -115,17 +115,7 @@
                         <asp:TextBox ID="PrisTB" runat="server"
                             Text='<%#Bind("Pris") %>' MaxLength="25" /><br />
                     </td>
-                    <%--<td>
-                        <asp:Label runat="server" ID="DiscontinuedDateLabel"
-                            AssociatedControlID="DiscontinuedDateTextBox"
-                            Text="Discontinued Date" />
-                        <asp:TextBox ID="DiscontinuedDateTextBox" runat="server"
-                            Text='<%# Bind("DiscontinuedDate", "{0:d}") %>'
-                            MaxLength="10" /><br />
-                        <asp:Calendar ID="DiscontinuedDateCalendar" runat="server"
-                            SelectedDate='<%# GetDateTime(Eval("DiscontinuedDate")) %>'
-                            OnSelectionChanged="DiscontinuedDateCalendar_OnSelectionChanged" />
-                    </td>--%>
+                  
                 </tr>
             </EditItemTemplate>
         </asp:ListView>
