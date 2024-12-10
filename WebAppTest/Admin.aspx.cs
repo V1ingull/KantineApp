@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.Xml.Linq;
+using System.Web.Services.Description;
 
 namespace WebAppTest
 {
@@ -53,7 +54,7 @@ namespace WebAppTest
             if (!Page.IsPostBack)
             {
                 VisUkeMenyAdmin();
-                VisFasteVarerAdmin();
+                VisFasteVarerAdmin(); 
 
 
             }
@@ -142,8 +143,13 @@ namespace WebAppTest
             lvFastevarerAdmin.DataSource = dt;
             lvFastevarerAdmin.DataBind();
         }
+        void ProductsListView_ItemEditing(Object sender, ListViewEditEventArgs e)
+        {
+            ListViewItem item = ProductsListView.Items[e.NewEditIndex];
+            Label dateLabel = (Label)item.FindControl("DiscontinuedDateLabel");
+
+            if (String.IsNullOrEmpty(dateLabel.Text))
+                return;
+        }
     }
-
-   
-
 }

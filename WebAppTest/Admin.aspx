@@ -71,10 +71,11 @@
         <br />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
+        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="ProductsListView_ItemEditing">
             <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Pris</th>
                         <th></th>
@@ -88,10 +89,45 @@
                 </tr>
             </GroupTemplate>
             <ItemTemplate>
+                <td valign="top">
+                    <asp:LinkButton ID="EditButton" runat="server" Text="Edit" CommandName="Edit" />
+                </td>
                 <td><%# Eval("Name") %></td>
                 <td><%# Eval("Pris") %></td>
                 <td>Kr</td>
             </ItemTemplate>
+            <EditItemTemplate>
+                <tr style="background-color: #ADD8E6">
+                    <td valign="top">
+                        <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <br />
+                        <asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                    </td>
+                    <td valign="top" colspan="2">
+                        <asp:Label runat="server" ID="NameLabel"
+                            AssociatedControlID="NameTextBox"
+                            Text="Name" />
+                        <asp:TextBox ID="NameTextBox" runat="server"
+                            Text='<%#Bind("Name") %>' MaxLength="50" /><br />
+                        <asp:Label runat="server" ID="Pris"
+                            AssociatedControlID="PrisTB"
+                            Text="Pris" />
+                        <asp:TextBox ID="PrisTB" runat="server"
+                            Text='<%#Bind("Pris") %>' MaxLength="25" /><br />
+                    </td>
+                    <%--<td>
+                        <asp:Label runat="server" ID="DiscontinuedDateLabel"
+                            AssociatedControlID="DiscontinuedDateTextBox"
+                            Text="Discontinued Date" />
+                        <asp:TextBox ID="DiscontinuedDateTextBox" runat="server"
+                            Text='<%# Bind("DiscontinuedDate", "{0:d}") %>'
+                            MaxLength="10" /><br />
+                        <asp:Calendar ID="DiscontinuedDateCalendar" runat="server"
+                            SelectedDate='<%# GetDateTime(Eval("DiscontinuedDate")) %>'
+                            OnSelectionChanged="DiscontinuedDateCalendar_OnSelectionChanged" />
+                    </td>--%>
+                </tr>
+            </EditItemTemplate>
         </asp:ListView>
 
 
