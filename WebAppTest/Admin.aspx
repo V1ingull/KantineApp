@@ -72,7 +72,7 @@
 
         <h3>Faste varer </h3>
         <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" > 
-            <LayoutTemplate>--%>
+            <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th></th>

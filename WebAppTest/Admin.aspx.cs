@@ -145,7 +145,8 @@ namespace WebAppTest
         }
         protected void lvFastevarerAdmin_ItemEditing(Object sender, ListViewEditEventArgs e)
         {
-            ListViewItem item = lvFastevarerAdmin.Items[e.NewEditIndex];
+            //ListViewItem item = lvFastevarerAdmin.Items[e.NewEditIndex];
+            ListViewItem item = lvFastevarerAdmin.EditItem;
         }
     }
 }
