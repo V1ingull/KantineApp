@@ -53,6 +53,9 @@ namespace WebAppTest
             if (!Page.IsPostBack)
             {
                 VisUkeMenyAdmin();
+                VisFasteVarerAdmin();
+
+
             }
         }
 
@@ -114,6 +117,29 @@ namespace WebAppTest
             TBprisTor.Text = dt.Rows[3][1].ToString();
             TBprisFre.Text = dt.Rows[4][1].ToString();
         }
+
+        private void VisFasteVarerAdmin()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT name, pris from Meny", conn);
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+                conn.Close();
+            }
+
+            lvFastevarerAdmin.DataSource = dt;
+            lvFastevarerAdmin.DataBind();
+        }
     }
+
+   
 
 }
