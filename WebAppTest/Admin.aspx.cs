@@ -145,11 +145,7 @@ namespace WebAppTest
         }
         void ProductsListView_ItemEditing(Object sender, ListViewEditEventArgs e)
         {
-            ListViewItem item = ProductsListView.Items[e.NewEditIndex];
-            Label dateLabel = (Label)item.FindControl("DiscontinuedDateLabel");
-
-            if (String.IsNullOrEmpty(dateLabel.Text))
-                return;
+            ListViewItem item = lvFastevarerAdmin.Items[e.NewEditIndex];
         }
     }
 }
