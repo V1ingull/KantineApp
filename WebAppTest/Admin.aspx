@@ -71,7 +71,7 @@
         <br />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" > 
+        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_RowUpdating" > 
             <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
