@@ -149,8 +149,8 @@ namespace WebAppTest
             VisFasteVarerAdmin();
         }
 
-        protected void lvFastevarerAdmin_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
+        protected void lvFastevarerAdmin_ItemCanceling(Object sender, ListViewCancelEventArgs e)
+        { 
             lvFastevarerAdmin.EditIndex = -1;
             VisFasteVarerAdmin();
         }
