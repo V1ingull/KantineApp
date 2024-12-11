@@ -72,7 +72,7 @@
         <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server" />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" OnItemDeleting="lvFastevarerAdmin_OnItemDeleting" OnItemInserting="lvFastevarerAdmin_ItemInserting">
+        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" OnItemDeleting="lvFastevarerAdmin_OnItemDeleting" OnItemInserting="lvFastevarerAdmin_ItemInserting" InsertItemPosition="LastItem">
             <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
@@ -105,7 +105,7 @@
                 <tr style="background-color: #ADD8E6">
                     <td valign="top">
                         <asp:LinkButton ID="LagreButton" runat="server" CommandName="Update" Text="Lagre" />
-                        <br />
+                        
                         <asp:LinkButton ID="AvbrytButton" runat="server" CommandName="Cancel" Text="Avbryt" />
                     </td>
                     <td valign="top" colspan="2">
@@ -113,12 +113,12 @@
                             AssociatedControlID="NameTB"
                             Text="Name" />
                         <asp:TextBox ID="NameTB" runat="server"
-                            Text='<%#Bind("Name")%>' MaxLength="20" /><br />
+                            Text='<%#Bind("Name")%>' MaxLength="20" style="width: 80px" />
                         <asp:Label runat="server" ID="Pris"
                             AssociatedControlID="PrisTB"
                             Text="Pris" />
                         <asp:TextBox ID="PrisTB" runat="server"
-                            Text='<%#Bind("Pris")%>' MaxLength="6" /><br />
+                            Text='<%#Bind("Pris")%>' MaxLength="6" style="width: 40px"/>
                     </td>
 
                 </tr>
@@ -135,12 +135,12 @@
                             AssociatedControlID="NameTB"
                             Text="Name" />
                         <asp:TextBox ID="NameTB" runat="server"
-                            Text='<%#Bind("Name")%>' MaxLength="20" /><br />
+                            Text='<%#Bind("Name")%>' MaxLength="20" style="width: 80px"/>
                         <asp:Label runat="server" ID="Pris"
                             AssociatedControlID="PrisTB"
                             Text="Pris" />
                         <asp:TextBox ID="PrisTB" runat="server"
-                            Text='<%#Bind("Pris")%>' MaxLength="6" /><br />
+                            Text='<%#Bind("Pris")%>' MaxLength="6" style="width: 40px" />
                     </td>
 
                 </tr>

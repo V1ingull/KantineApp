@@ -161,7 +161,7 @@ namespace WebAppTest
         protected void LeggTilFasteVarer(SqlConnection conn, string name, float pris)
         {
 
-            string query = "Insert into Meny SET name=@name, pris=@pris";
+            string query = "Insert into Meny([name],[pris]) Values(@name, @pris)";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@name", name);
