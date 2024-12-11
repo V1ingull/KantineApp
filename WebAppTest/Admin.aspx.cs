@@ -158,10 +158,10 @@ namespace WebAppTest
                 conn.Close();
             }
         }
-        protected void LeggTilFasteVarer(SqlConnection conn, string name, float pris, int Id)
+        protected void LeggTilFasteVarer(SqlConnection conn, string name, float pris)
         {
 
-            string query = "Incert into Meny SET name=@name, pris=@pris";
+            string query = "Insert into Meny SET name=@name, pris=@pris";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@name", name);
@@ -220,15 +220,14 @@ namespace WebAppTest
         }
         protected void lvFastevarerAdmin_ItemInserting(Object sender, ListViewInsertEventArgs e)
         {
-            var name = e.NewValues["Name"].ToString();
-            var Id = lvFastevarerAdmin.EditIndex + 1; //index i db begynner på 1
+            var name = e.Values["Name"].ToString();
             float pris;
-            if (!float.TryParse(e.NewValues["Pris"].ToString(), out pris)) pris = 0;
+            if (!float.TryParse(e.Values["Pris"].ToString(), out pris)) pris = 0;
 
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                LagreFasteVarer(conn, name, pris, Id);
+                LeggTilFasteVarer(conn, name, pris);
             }
 
             lvFastevarerAdmin.EditIndex = -1;
