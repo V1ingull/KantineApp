@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.Xml.Linq;
 using System.Web.Services.Description;
+using System.Collections;
 
 namespace WebAppTest
 {
@@ -146,7 +147,7 @@ namespace WebAppTest
         protected void LagreFasteVarer(SqlConnection conn, string name, float pris, int Id)
         {
   
-                  string query = "UPDATE Meny SET name=@name, pris=@pris, WHERE Id=@Id";
+                  string query = "UPDATE Meny SET name=@name, pris=@pris WHERE Id=@Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", Id);
@@ -170,27 +171,16 @@ namespace WebAppTest
         }
         protected void lvFastevarerAdmin_ItemUpdating(Object sender, ListViewUpdateEventArgs e)
         {
-            //int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            //string fornavn = ((TextBox)GridView1.Rows[e.RowIndex].FindControl("Fornavn")).Text;
-            //string etternavn = ((TextBox)GridView1.Rows[e.RowIndex].FindControl("Etternavn")).Text;
-            //string epost = ((TextBox)GridView1.Rows[e.RowIndex].FindControl("Epost")).Text;
-            //string stilling = ((TextBox)GridView1.Rows[e.RowIndex].FindControl("Stilling")).Text;
+
+            var name = e.NewValues["Name"].ToString();
+            var Id = lvFastevarerAdmin.EditIndex+1; //index i db begynner på 1
+            float pris;
+            if (!float.TryParse(e.NewValues["Pris"].ToString(), out pris)) pris=0; 
+
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                //    string query = "UPDATE YourTable SET Fornavn=@Fornavn, Etternavn=@Etternavn, Epost=@Epost, Stilling=@Stilling WHERE ID=@ID";
-                //    using (SqlCommand cmd = new SqlCommand(query, conn))
-                //    {
-                //        cmd.Parameters.AddWithValue("@ID", id);
-                //        cmd.Parameters.AddWithValue("@Fornavn", fornavn);
-                //        cmd.Parameters.AddWithValue("@Etternavn", etternavn);
-                //        cmd.Parameters.AddWithValue("@Epost", epost);
-                //        cmd.Parameters.AddWithValue("@Stilling", stilling);
-                //        conn.Open();
-                //        cmd.ExecuteNonQuery();
-                //        conn.Close();
-                //    }
-                LagreFasteVarer(conn);
+                LagreFasteVarer(conn, name, pris, Id);
             }
             
             lvFastevarerAdmin.EditIndex = -1;

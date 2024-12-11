@@ -114,15 +114,6 @@ namespace WebAppTest
         protected global::System.Web.UI.WebControls.TextBox TBprisFre;
 
         /// <summary>
-        /// lvFastevarerAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvFastevarerAdmin;
-
-        /// <summary>
         /// ButtonLagre control.
         /// </summary>
         /// <remarks>
@@ -130,5 +121,14 @@ namespace WebAppTest
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonLagre;
+
+        /// <summary>
+        /// lvFastevarerAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvFastevarerAdmin;
     }
 }

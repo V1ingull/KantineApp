@@ -15,7 +15,7 @@
     <style>
         table {
             border-collapse: collapse;
-            min-width: 350px;
+            min-width: 500px;
             font-family: Arial, sans-serif;
             margin-left: auto;
             margin-right: auto;
@@ -69,9 +69,10 @@
         <asp:TextBox ID="TBrettFre" runat="server" Text=""></asp:TextBox>
         <asp:TextBox ID="TBprisFre" runat="server" Text=""></asp:TextBox>
         <br />
+         <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server" />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_RowUpdating" > 
+        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" > 
             <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
@@ -90,7 +91,7 @@
             </GroupTemplate>
             <ItemTemplate>
                 <td valign="top">
-                    <asp:LinkButton ID="EditButton" runat="server" Text="Edit" CommandName="Edit" />
+                    <asp:LinkButton ID="EditButton" runat="server" Text="Endre" CommandName="Edit" />
                 </td>
                 <td><%# Eval("Name") %></td>
                 <td><%# Eval("Pris") %></td>
@@ -99,21 +100,21 @@
             <EditItemTemplate>
                 <tr style="background-color: #ADD8E6">
                     <td valign="top">
-                        <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                        <asp:LinkButton ID="LagreButton" runat="server" CommandName="Update" Text="Lagre" />
                         <br />
-                        <asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                        <asp:LinkButton ID="AvbrytButton" runat="server" CommandName="Cancel" Text="Avbryt" />
                     </td>
                     <td valign="top" colspan="2">
                         <asp:Label runat="server" ID="NameLabel"
                             AssociatedControlID="NameTB"
                             Text="Name" />
                         <asp:TextBox ID="NameTB" runat="server"
-                            Text='<%#Bind("Name")%>' MaxLength="50" /><br />
+                            Text='<%#Bind("Name")%>' MaxLength="20" /><br />
                         <asp:Label runat="server" ID="Pris"
                             AssociatedControlID="PrisTB"
                             Text="Pris" />
                         <asp:TextBox ID="PrisTB" runat="server"
-                            Text='<%#Bind("Pris")%>' MaxLength="25" /><br />
+                            Text='<%#Bind("Pris")%>' MaxLength="6" /><br />
                     </td>
                   
                 </tr>
@@ -121,7 +122,7 @@
         </asp:ListView>
 
 
-        <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server" />
+       
 
 
     </form>
