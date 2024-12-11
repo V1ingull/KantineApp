@@ -55,7 +55,7 @@ namespace WebAppTest
             if (!Page.IsPostBack)
             {
                 VisUkeMenyAdmin();
-                VisFasteVarerAdmin(); 
+                VisFasteVarerAdmin();
 
 
             }
@@ -146,18 +146,31 @@ namespace WebAppTest
         }
         protected void LagreFasteVarer(SqlConnection conn, string name, float pris, int Id)
         {
-  
-                  string query = "UPDATE Meny SET name=@name, pris=@pris WHERE Id=@Id";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Id", Id);
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@pris", pris);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                }
-          }
+
+            string query = "UPDATE Meny SET name=@name, pris=@pris WHERE Id=@Id";
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@pris", pris);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+        protected void LeggTilFasteVarer(SqlConnection conn, string name, float pris, int Id)
+        {
+
+            string query = "Incert into Meny SET name=@name, pris=@pris";
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@pris", pris);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
         protected void lvFastevarerAdmin_ItemEditing(Object sender, ListViewEditEventArgs e)
         {
             lvFastevarerAdmin.EditIndex = e.NewEditIndex;
@@ -165,7 +178,7 @@ namespace WebAppTest
         }
 
         protected void lvFastevarerAdmin_ItemCanceling(Object sender, ListViewCancelEventArgs e)
-        { 
+        {
             lvFastevarerAdmin.EditIndex = -1;
             VisFasteVarerAdmin();
         }
@@ -173,16 +186,51 @@ namespace WebAppTest
         {
 
             var name = e.NewValues["Name"].ToString();
-            var Id = lvFastevarerAdmin.EditIndex+1; //index i db begynner på 1
+            var Id = lvFastevarerAdmin.EditIndex + 1; //index i db begynner på 1
             float pris;
-            if (!float.TryParse(e.NewValues["Pris"].ToString(), out pris)) pris=0; 
+            if (!float.TryParse(e.NewValues["Pris"].ToString(), out pris)) pris = 0;
 
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 LagreFasteVarer(conn, name, pris, Id);
             }
-            
+
+            lvFastevarerAdmin.EditIndex = -1;
+            VisFasteVarerAdmin();
+        }
+        protected void lvFastevarerAdmin_OnItemDeleting(Object sender, ListViewDeleteEventArgs e) 
+        {
+
+            int id = e.ItemIndex + 1;  //index i db begynner på 1
+
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Meny WHERE Id=@Id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            VisFasteVarerAdmin();
+        }
+        protected void lvFastevarerAdmin_ItemInserting(Object sender, ListViewInsertEventArgs e)
+        {
+            var name = e.NewValues["Name"].ToString();
+            var Id = lvFastevarerAdmin.EditIndex + 1; //index i db begynner på 1
+            float pris;
+            if (!float.TryParse(e.NewValues["Pris"].ToString(), out pris)) pris = 0;
+
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                LagreFasteVarer(conn, name, pris, Id);
+            }
+
             lvFastevarerAdmin.EditIndex = -1;
             VisFasteVarerAdmin();
         }

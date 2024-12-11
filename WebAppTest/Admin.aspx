@@ -69,16 +69,17 @@
         <asp:TextBox ID="TBrettFre" runat="server" Text=""></asp:TextBox>
         <asp:TextBox ID="TBprisFre" runat="server" Text=""></asp:TextBox>
         <br />
-         <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server" />
+        <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server" />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" > 
+        <asp:ListView ID="lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" OnItemDeleting="lvFastevarerAdmin_OnItemDeleting" OnItemInserting="lvFastevarerAdmin_ItemInserting">
             <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th></th>
                         <th>Name</th>
                         <th>Pris</th>
+                        <th></th>
                         <th></th>
                     </tr>
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
@@ -96,6 +97,9 @@
                 <td><%# Eval("Name") %></td>
                 <td><%# Eval("Pris") %></td>
                 <td>Kr</td>
+                <td valign="top">
+                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Slett" CommandName="Delete" />
+                </td>
             </ItemTemplate>
             <EditItemTemplate>
                 <tr style="background-color: #ADD8E6">
@@ -116,13 +120,35 @@
                         <asp:TextBox ID="PrisTB" runat="server"
                             Text='<%#Bind("Pris")%>' MaxLength="6" /><br />
                     </td>
-                  
+
                 </tr>
             </EditItemTemplate>
+            <incertitemtemplate>
+                <tr style="background-color: #ADD8E6">
+
+                    <td>
+                        <asp:LinkButton ID="InsertButton" runat="server" CommandName="Insert" Text="Legg til" />
+                    </td>
+
+                    <td valign="top" colspan="2">
+                        <asp:Label runat="server" ID="NameLabel"
+                            AssociatedControlID="NameTB"
+                            Text="Name" />
+                        <asp:TextBox ID="NameTB" runat="server"
+                            Text='<%#Bind("Name")%>' MaxLength="20" /><br />
+                        <asp:Label runat="server" ID="Pris"
+                            AssociatedControlID="PrisTB"
+                            Text="Pris" />
+                        <asp:TextBox ID="PrisTB" runat="server"
+                            Text='<%#Bind("Pris")%>' MaxLength="6" /><br />
+                    </td>
+
+                </tr>
+            </incertitemtemplate>
         </asp:ListView>
 
 
-       
+
 
 
     </form>
