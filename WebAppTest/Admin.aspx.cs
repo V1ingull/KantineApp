@@ -132,7 +132,7 @@ namespace WebAppTest
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT name, pris from Meny", conn);
+                SqlCommand cmd = new SqlCommand("SELECT name, pris, Id from Meny", conn);
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -202,8 +202,8 @@ namespace WebAppTest
         protected void lvFastevarerAdmin_OnItemDeleting(Object sender, ListViewDeleteEventArgs e) 
         {
 
-            int id = e.ItemIndex + 1;  //index i db begynner på 1
-
+            /*int id = e.ItemIndex - 1;*/  //index i db begynner på 1
+            var id = e.Values["Id"].ToString();
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

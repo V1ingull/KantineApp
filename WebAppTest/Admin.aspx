@@ -77,6 +77,7 @@
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <th></th>
+                        <th></th>
                         <th>Name</th>
                         <th>Pris</th>
                         <th></th>
@@ -91,6 +92,7 @@
                 </tr>
             </GroupTemplate>
             <ItemTemplate>
+                <td><%# Eval("Id") %></td>
                 <td valign="top">
                     <asp:LinkButton ID="EditButton" runat="server" Text="Endre" CommandName="Edit" />
                 </td>
