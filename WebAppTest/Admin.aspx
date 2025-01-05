@@ -72,7 +72,7 @@
         <asp:Button ID="ButtonLagre" Text="Lagre" OnClick="ButtonLagre_Click" runat="server" />
 
         <h3>Faste varer </h3>
-        <asp:ListView ID= DataKeyNames="Id" "lvFastevarerAdmin" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" OnItemDeleting="lvFastevarerAdmin_OnItemDeleting" OnItemInserting="lvFastevarerAdmin_ItemInserting" InsertItemPosition="LastItem">
+        <asp:ListView ID="lvFastevarerAdmin" DataKeyNames="Id" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1" OnItemEditing="lvFastevarerAdmin_ItemEditing" OnItemCanceling="lvFastevarerAdmin_ItemCanceling" OnItemUpdating="lvFastevarerAdmin_ItemUpdating" OnItemDeleting="lvFastevarerAdmin_OnItemDeleting" OnItemInserting="lvFastevarerAdmin_ItemInserting" InsertItemPosition="LastItem"> 
             <LayoutTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr>
