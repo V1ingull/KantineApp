@@ -202,7 +202,6 @@ namespace WebAppTest
         protected void lvFastevarerAdmin_OnItemDeleting(Object sender, ListViewDeleteEventArgs e) 
         {
 
-            /*int id = e.ItemIndex - 1;*/  //index i db begynner på 1
             var id = lvFastevarerAdmin.DataKeys[e.ItemIndex].Value;
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
