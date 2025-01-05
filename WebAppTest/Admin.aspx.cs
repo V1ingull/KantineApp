@@ -203,7 +203,7 @@ namespace WebAppTest
         {
 
             /*int id = e.ItemIndex - 1;*/  //index i db begynner på 1
-            var id = e.Values["Id"].ToString();
+            var id = lvFastevarerAdmin.DataKeys[e.ItemIndex].Value;
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
