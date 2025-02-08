@@ -18,18 +18,18 @@ namespace WebAppTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if user is authenticated
+            
             if (Session["Authenticated"] == null || !(bool)Session["Authenticated"])
             {
                 if (Request.HttpMethod == "POST")
                 {
-                    // Handle password submission
+                    
                     string password = Request.Form["password"];
 
-                    if (password == "1") // Replace with actual password logic
+                    if (password == "1")
                     {
-                        Session["Authenticated"] = true; // Mark user as authenticated
-                        Response.Redirect(Request.RawUrl); // Reload page to continue without the password form
+                        Session["Authenticated"] = true;
+                        Response.Redirect(Request.RawUrl);
                     }
                     else
                     {
@@ -38,7 +38,7 @@ namespace WebAppTest
                 }
                 else
                 {
-                    // Render password form
+                    
                     Response.Write(@"
                                     <form method='post'>
                                         <label for='password'>Skriv in passord:</label>
@@ -48,10 +48,10 @@ namespace WebAppTest
                                  ");
                 }
 
-                Response.End(); // Stop further processing of the page
+                Response.End();
             }
 
-            // Continue processing the page for authenticated users
+            
             if (!Page.IsPostBack)
             {
                 VisUkeMenyAdmin();
@@ -186,7 +186,7 @@ namespace WebAppTest
         {
 
             var name = e.NewValues["Name"].ToString();
-            var Id = lvFastevarerAdmin.EditIndex + 1; //index i db begynner på 1
+            var Id = Convert.ToInt32(e.Keys["Id"]);
             float pris;
             if (!float.TryParse(e.NewValues["Pris"].ToString(), out pris)) pris = 0;
 
@@ -219,7 +219,13 @@ namespace WebAppTest
         }
         protected void lvFastevarerAdmin_ItemInserting(Object sender, ListViewInsertEventArgs e)
         {
-            var name = e.Values["Name"].ToString();
+
+            if (!Page.IsPostBack)
+            {
+                return;
+            }
+
+                var name = e.Values["Name"].ToString();
             float pris;
             if (!float.TryParse(e.Values["Pris"].ToString(), out pris)) pris = 0;
 

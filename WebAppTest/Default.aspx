@@ -23,9 +23,9 @@
             transition: background-color 0.3s ease;
         }
 
-        nav a:hover {
-            background-color: #555;
-        }
+            nav a:hover {
+                background-color: #555;
+            }
 
         nav .login-btn {
             background-color: #007BFF;
@@ -37,9 +37,9 @@
             transition: background-color 0.3s ease;
         }
 
-        nav .login-btn:hover {
-            background-color: #0056b3;
-        }
+            nav .login-btn:hover {
+                background-color: #0056b3;
+            }
 
         @media (max-width: 768px) {
             nav {
@@ -47,9 +47,9 @@
                 text-align: center;
             }
 
-            nav a {
-                margin: 0.5rem 0;
-            }
+                nav a {
+                    margin: 0.5rem 0;
+                }
         }
 
         h3 {
@@ -140,32 +140,32 @@
 
         <h3>Faste varer </h3>
 
-        
-           
-            <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
-                <LayoutTemplate>
-                    <table cellpadding="0" cellspacing="0">
-                        <tr>
-                            <th>Name</th>
-                            <th>Pris</th>
-                            <th></th>
-                        </tr>
-                        <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
-                    </table>
-                </LayoutTemplate>
-                <GroupTemplate>
-                    <tr>
-                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
-                    </tr>
-                </GroupTemplate>
-                <ItemTemplate>
-                    <td><%# Eval("Name") %></td>
-                    <td><%# Eval("Pris") %></td>
-                    <td>Kr</td>
-                </ItemTemplate>
-            </asp:ListView>
 
-        
+
+        <asp:ListView ID="lvFastevarer" runat="server" GroupPlaceholderID="groupPlaceHolder1" ItemPlaceholderID="itemPlaceHolder1">
+            <LayoutTemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>Name</th>
+                        <th>Pris</th>
+                        <th></th>
+                    </tr>
+                    <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
+                </table>
+            </LayoutTemplate>
+            <GroupTemplate>
+                <tr>
+                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+                </tr>
+            </GroupTemplate>
+            <ItemTemplate>
+                <td><%# Eval("Name") %></td>
+                <td><%# Eval("Pris") %></td>
+                <td>Kr</td>
+            </ItemTemplate>
+        </asp:ListView>
+
+
 
 
     </form>
