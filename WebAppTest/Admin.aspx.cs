@@ -23,17 +23,17 @@ namespace WebAppTest
             {
                 if (Request.HttpMethod == "POST")
                 {
-                    
+                    string UserName = Request.Form["UserName"];
                     string password = Request.Form["password"];
 
-                    if (password == "1")
+                    if (UserName == "Admin" && password == "1")
                     {
                         Session["Authenticated"] = true;
                         Response.Redirect(Request.RawUrl);
                     }
                     else
                     {
-                        Response.Write("<p style='color:red;'>Feil passord.</p>");
+                        Response.Write("<p style='color:red;'>Feil passord eller brukernavn.</p>");
                     }
                 }
                 else
@@ -41,6 +41,8 @@ namespace WebAppTest
                     
                     Response.Write(@"
                                     <form method='post'>
+                                        <label for='Username'>Skriv in Brukernavn:</label>
+                                        <input type='UserName' id='UserName' name='UserName' />
                                         <label for='password'>Skriv in passord:</label>
                                         <input type='password' id='password' name='password' />
                                         <input type='Submit' value='OK' />
@@ -219,11 +221,6 @@ namespace WebAppTest
         }
         protected void lvFastevarerAdmin_ItemInserting(Object sender, ListViewInsertEventArgs e)
         {
-
-            if (!Page.IsPostBack)
-            {
-                return;
-            }
 
                 var name = e.Values["Name"].ToString();
             float pris;
